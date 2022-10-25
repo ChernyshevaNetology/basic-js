@@ -6,7 +6,7 @@
 	4) переделать все функции на стрелочные
  */
 
-function averageMark(a, g, p) {
+const averageMark = (a, g, p) => {
 	
     // реализуйте здесь задание №1
     
