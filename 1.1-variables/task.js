@@ -14,17 +14,11 @@ const averageMark = (a, g, p) => {
 	return averageG// ваш ответ;
 }
 
-const sayHello = (userName) => {
-
-    // реализуйте здесь задание №2
-    
-	return `Привет, мир! Меня зовут ${userName}` // ваш ответ;
-}
+const sayHello = (userName) => `Привет, мир! Меня зовут ${userName}`; // ваш ответ;
+// реализуйте здесь задание №2
 
 const calculateFormula = () => {
-    let x = 2; // реализуйте здесь задание №3
-	let y = 22;
-	let z = 0;
+    let x = 2, y = 22, z = 0;  // реализуйте здесь задание №3
 	let result = x * y + 5 * z + x - 1;
     
     return result; // ваш ответ;
