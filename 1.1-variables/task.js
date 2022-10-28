@@ -7,22 +7,19 @@
  */
 
 const averageMark = (a, g, p) => {
-	
-    // реализуйте здесь задание №1
-    
-	return // ваш ответ;
+	let algebra = a; // реализуйте здесь задание №1
+	let geography = g;
+	let physics = p;
+	let averageG = (a + g + p) / 3;
+	return averageG// ваш ответ;
 }
 
-function sayHello(userName) {
-	
-    // реализуйте здесь задание №2
-    
-	return // ваш ответ;
-}
+const sayHello = (userName) => `Привет, мир! Меня зовут ${userName}`; // ваш ответ;
+// реализуйте здесь задание №2
 
-function calculateFormula() {
+const calculateFormula = () => {
+    let x = 2, y = 22, z = 0;  // реализуйте здесь задание №3
+	let result = x * y + 5 * z + x - 1;
     
-	// реализуйте здесь задание №3
-    
-    return // ваш ответ;
+    return result; // ваш ответ;
 }
