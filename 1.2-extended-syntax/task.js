@@ -14,11 +14,9 @@ function getResult(a, b, c) {
 }
 
 function getAverageMark(marks) {
-    const markLength = marks.length >= 5 ? marks.slice(0, 5).length : marks.length;
     if (marks.length === 0) return 0;
-    else {
-        return +((marks.slice(0, 5).reduce((sum, curr) => sum + curr, 0)) / markLength).toFixed();
-    }
+    const markLength = marks.length >= 5 ? marks.slice(0, 5).length : marks.length;
+    return +((marks.slice(0, 5).reduce((sum, curr) => sum + curr, 0)) / markLength).toFixed();
 }
 
 function askDrink(name, dateOfBirthday) {
