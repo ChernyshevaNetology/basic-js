@@ -18,14 +18,15 @@ function getAverageMark(marks) {
         return 0;
     } else if (marks.length >= 5) {
         return +((marks.slice(0, 5).reduce((sum, curr) => sum + curr, 0)) / 5).toFixed();
-    } else if (marks.length < 5 && marks.length > 0) {
+    } else {
         return +((marks.reduce((sum, curr) => sum + curr, 0)) / marks.length).toFixed();
     }
 }
 
 function askDrink(name, dateOfBirthday) {
-    const year = new Date().getFullYear();
-    let userAge = year - dateOfBirthday;
+    let currentYear = new Date().getFullYear();
+    let userBirthDay = dateOfBirthday.getFullYear();
+    let userAge = currentYear - userBirthDay;
     if (userAge > 18) {
         return `Не желаете ли олд-фэшн, ${name}?`;
     } else {
