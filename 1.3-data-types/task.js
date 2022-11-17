@@ -4,14 +4,17 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     const c = +contribution;
     const a = +amount;
     const creditAmount = a - c;
-    const currentMonth = new Date().getMonth();
-    const nom = currentMonth - date.getMonth();
-    const totalAmount = creditAmount * (p + p / (((1 + p) ** nom) - 1)).toFixed(2);
+    const nextYearDate = new Date(new Date().setFullYear(new Date().getFullYear() + 3));
+    const period = nextYearDate - new Date().getFullYear;
+    const monthNum = period * 12;
+    const totalAmount = creditAmount * (p + p / (((1 + p) ** monthNum) - 1)).toFixed(2);
     return totalAmount;
 }
 
 function getGreeting(name) {
-    if (name === '') return 'Привет, мир! Меня зовут Аноним.';
-    return `Привет, мир! Меня зовут ${name}`;
+    const validUsers = ['Пётр'];
+    let anonymous = 'Аноним';
+    let result = (!validUsers.includes(name))? `Привет, мир! Меня зовут ${anonymous}.` : `Привет, мир! Меня зовут ${name}.`;
+    return result;
 }
 
