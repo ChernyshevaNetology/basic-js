@@ -1,22 +1,26 @@
 function calculateTotalMortgage(percent, contribution, amount, date) {
     'use strict';
-    const p = (percent) / 100;
-    const c = contribution;
-    const a = amount;
+    const p = (parseInt(percent)) / 100;
+    const c = parseInt(contribution);
+    const a = parseInt(amount);
+    const d = date(new Date().setFullYear(new Date().getFullYear() + 3));
+    const creditPeriod = d.getFullYear() - new Date().getFullYear();
 
-    if (p !== Number.isNaN(parseInt((p))) return `Параметр ${p} содержит неправильное значение ${percent}`;
-    if (c !== Number.isNaN(parseInt(c))) return `Параметр ${c} содержит неправильное значение ${contribution}`;
-    if (a !== Number.isNaN(parseInt(a))) return `Параметр ${a} содержит неправильное значение ${amount}`;
-
+    if (Number.isNaN(p)) {
+        return `Параметр "percent" содержит неправильное значение ${percent}`;
+    }
+    if (Number.isNaN(c)) {
+        return `Параметр "contribution" содержит неправильное значение ${contribution}`;
+    }
+    if (Number.isNaN(a)) {
+        return `Параметр "amount" содержит неправильное значение ${amount}`;
+    }
     const creditAmount = a - c;
-    const nextYearDate = new Date(new Date().setFullYear(new Date().getFullYear() + 3));
-    const creditPeriod = nextYearDate.getFullYear() - new Date().getFullYear();
-    const monthNum = creditPeriod * 12;
-    const totalAmount = creditAmount * (p + p / (((1 + p) ^ monthNum) - 1)).toFixed(2);
-    return totalAmount;
+    const monthlyInterest = p / 12;
+    const monthNum = d * 12;
+    const monthlyPayment = creditAmount * (monthlyInterest + monthlyInterest / ((1 + monthlyInterest) ** monthNum - 1));
+    return  +(monthlyPayment * creditPeriod).toFixed(2);
 }
-
-console.log(calculateTotalMortgage(10, 0, 50000, 2025));
 
 function getGreeting(name) {
     return (!name) ? `Привет, мир! Меня зовут Аноним.` : `Привет, мир! Меня зовут ${name}.`;
