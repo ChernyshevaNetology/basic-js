@@ -3,21 +3,25 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     const p = (parseInt(percent)) / 100;
     const c = parseInt(contribution);
     const a = parseInt(amount);
-    const d = date(new Date().setFullYear(new Date().getFullYear() + 3));
-    const creditPeriod = d.getFullYear() - new Date().getFullYear();
+    const d = date;
 
     if (Number.isNaN(p)) {
-        return `Параметр "percent" содержит неправильное значение ${percent}`;
+        return `Параметр "Процентная ставка" содержит неправильное значение ${percent}`;
     }
     if (Number.isNaN(c)) {
-        return `Параметр "contribution" содержит неправильное значение ${contribution}`;
+        return `Параметр "Первоначальный взнос" содержит неправильное значение ${contribution}`;
     }
     if (Number.isNaN(a)) {
-        return `Параметр "amount" содержит неправильное значение ${amount}`;
+        return `Параметр "Общая стоимость" содержит неправильное значение ${amount}`;
     }
+    if (d.getFullYear < new Date().getFullYear()) {
+        return `Параметр "Срок ипотеки" содержит неправильное значение ${date}`;
+    }
+
+    const creditPeriod = date.getFullYear() - new Date().getFullYear();
     const creditAmount = a - c;
     const monthlyInterest = p / 12;
-    const monthNum = d * 12;
+    const monthNum = creditPeriod * 12;
     const monthlyPayment = creditAmount * (monthlyInterest + monthlyInterest / ((1 + monthlyInterest) ** monthNum - 1));
     return  +(monthlyPayment * creditPeriod).toFixed(2);
 }
