@@ -13,14 +13,16 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
         return `Параметр "Первоначальный взнос" содержит неправильное значение ${contribution}`;
     } else if (c < 0) {
         return `Параметр "Первоначальный взнос" содержит неправильное значение ${contribution}`;
+    } else if (c > a) {
+        return 0;
     }
     if (Number.isNaN(a)) {
         return `Параметр "Общая стоимость" содержит неправильное значение ${amount}`;
-    } else if (a < 0) {
+    } else if (a <= 0) {
         return `Параметр "Общая стоимость" содержит неправильное значение ${amount}`;
     }
     if (new Date(date).getFullYear() < new Date().getFullYear()) {
-        return `Параметр "Срок ипотеки" содержит неправильное значение ${date}`;
+        return `Параметр "Срок ипотеки" содержит неправильное значение ${date.toLocaleString()}`;
     }
     const creditPeriod = (new Date(date).getFullYear() - new Date().getFullYear()) * 12;
     const creditAmount = a - c;
