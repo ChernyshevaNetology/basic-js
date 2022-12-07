@@ -4,28 +4,30 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     const values = [
         {
             paramName: 'Процентная ставка',
-            val: 'percent'
+            val: p
         },
         {
             paramName: 'Первоначальный взнос',
-            val: 'contribution'
+            val: contribution
         },
         {
             paramName: 'Общая стоимость',
-            val: 'amount'
+            val: amount
         },
         {
             paramName: 'Срок ипотеки',
-            val: 'date'
+            val: date
         }
     ];
 
-    if (val instanceof Date) {
-        if (new Date(date).getFullYear() < new Date().getFullYear()) {
-            return `Параметр ${paramName} содержит неправильное значение ${date.toLocaleString()}`;
+        for (const val of values) {
+        if (val.val instanceof Date) {
+            if (new Date(date).getFullYear() < new Date().getFullYear()) {
+                return `Параметр ${val.paramName} содержит неправильное значение ${date.toLocaleString()}`;
+            }
         }
-        if (isNaN(val) || val < 0) {
-            `Параметр ${paramName} содержит неправильное значение ${val}`;
+        if (isNaN(val.val) || val.val < 0) {
+            `Параметр ${val.paramName} содержит неправильное значение ${val}`;
         }
     }
 
