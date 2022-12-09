@@ -22,7 +22,7 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
         for (const {paramName, val} of values) {
         if (val instanceof Date) {
             if (new Date(date).getFullYear() < new Date().getFullYear()) {
-                return `Параметр "${paramName}" содержит неправильное значение ${date.toLocaleString()}`;
+                return `Параметр "${paramName}" содержит неправильное значение ${val.toLocaleString()}`;
             }
         }
         if (isNaN(val) || val < 0) {
