@@ -19,14 +19,14 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
         }
     ];
 
-        for (const val of values) {
-        if (val.val instanceof Date) {
+        for (const {paramName, val} of values) {
+        if (val instanceof Date) {
             if (new Date(date).getFullYear() < new Date().getFullYear()) {
-                return `Параметр "${val.paramName}" содержит неправильное значение ${date.toLocaleString()}`;
+                return `Параметр "${paramName}" содержит неправильное значение ${date.toLocaleString()}`;
             }
         }
-        if (isNaN(val.val) || val.val < 0) {
-            return `Параметр "${val.paramName}" содержит неправильное значение ${val.val}`;
+        if (isNaN(val) || val < 0) {
+            return `Параметр "${paramName}" содержит неправильное значение ${val}`;
         }
     }
     if (contribution >= amount) return 0;
@@ -37,7 +37,4 @@ function calculateTotalMortgage(percent, contribution, amount, date) {
     return +(monthlyPayment * creditPeriod).toFixed(2);
 }
 
-function getGreeting(name) {
-    return `Привет, мир! Меня зовут ${name ? name : 'Аноним'}.`;
-}
-
+const getGreeting = (name) => { return `Привет, мир! Меня зовут ${name ? name : 'Аноним'}.`;}
