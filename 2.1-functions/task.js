@@ -44,6 +44,5 @@ const pirates = {
 };
 
 function getDecodedValue(secret) {
-    if (secret === 0) return pirates[0];
-    if (secret === 1) return pirates[1];
+    return pirates[secret];
 }
