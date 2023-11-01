@@ -23,18 +23,12 @@ function getAverageScore(data) {
 }
 
 function getPersonData(secretData) {
-    let targetObject = Object.entries(secretData).reduce((acc, [index, name]) => { // получаем [0, 1]
+    let targetObject = Object.entries(secretData).reduce((acc, [index, name]) => {
         return {
             ...acc,
-            [index]: getDecodedValue(name) //
+            [index]: getDecodedValue(name)
         }
     }, {});
-
-    targetObject['firstName'] = targetObject['aaa'];
-    targetObject['lastName'] = targetObject['bbb'];
-    delete targetObject['aaa'];
-    delete targetObject['bbb'];
-
     return targetObject;
 }
 
@@ -43,6 +37,4 @@ const pirates = {
     1: 'Эмильо'
 };
 
-function getDecodedValue(secret) {
-    return pirates[secret];
-}
+const getDecodedValue = (secret) => pirates[secret];
