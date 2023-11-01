@@ -29,6 +29,10 @@ function getPersonData(secretData) {
             [index]: getDecodedValue(name)
         }
     }, {});
+    targetObject['firstName'] = targetObject['aaa'];
+    targetObject['lastName'] = targetObject['bbb'];
+    delete targetObject['aaa'];
+    delete targetObject['bbb'];
     return targetObject;
 }
 
