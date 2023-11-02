@@ -1,4 +1,4 @@
-function getAverageMark(marks) {
+const getAverageMark = (marks) => {
     if (marks.length === 0) return 0;
     return marks.reduce((acc, curr) => acc + curr, 0) / marks.length;
 }
@@ -23,22 +23,25 @@ function getAverageScore(data) {
 }
 
 function getPersonData(secretData) {
-    let targetObject = Object.entries(secretData).reduce((acc, [index, name]) => {
+    let targetObject = Object.entries(secretData).reduce((acc, [key, idx]) => {
         return {
             ...acc,
-            [index]: getDecodedValue(name)
+            [names[key]]: getDecodedValue(idx)
         }
     }, {});
-    targetObject['firstName'] = targetObject['aaa'];
-    targetObject['lastName'] = targetObject['bbb'];
-    delete targetObject['aaa'];
-    delete targetObject['bbb'];
     return targetObject;
 }
+
+const getDecodedValue = (secret) => pirates[secret];
 
 const pirates = {
     0: 'Родриго',
     1: 'Эмильо'
 };
 
-const getDecodedValue = (secret) => pirates[secret];
+const names = {
+    aaa: 'firstName',
+    bbb: 'lastName',
+};
+
+
