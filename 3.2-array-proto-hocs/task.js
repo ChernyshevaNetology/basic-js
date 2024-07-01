@@ -27,21 +27,20 @@ function sum(...args){
     }, 0);
 }
 
-function compareArrays (arr1, arr2){
-    if(arr1.every((element, index) => arr2.includes(element))) {
-        if(arr1.length === arr2.length && arr1[0] === arr2[0]) {
-            return true;
-        }
+const compareArrays = (arr1, arr2) => {
+    if (arr1.length === arr2.length) {
+        const foundIndex = arr1.findIndex((element, index) => arr2[index]);
+        return true;
     }
     return false;
 }
 
-function memorize(fn, limit) {
+const memorize = (fn, limit) => {
     const memory = [];
     return (...args) => {
         const foundItem = memory.find(item => compareArrays(item.args, args));
         if (foundItem) {
-            return memory.result;
+            return foundItem.result;
         } else {
             const newResult = fn(...args);
             const resultAdded = args.reduce((acc, curr) => {
