@@ -44,15 +44,17 @@ const memorize = (fn, limit) => {
             return foundItem.result;
         } else {
             const newResult = fn(...args);
-            memory.push({
-                args,
-                result: newResult,
-            });
             if (memory.length === limit) {
                 memory.splice(0, 1);
-                memory.push(newResult);
+                memory.push({
+                    args,
+                    result: newResult,
+                });
             } else {
-                memory.push(newResult);
+                memory.push({
+                    args,
+                    result: newResult,
+                });
             }
             return newResult;
         }
