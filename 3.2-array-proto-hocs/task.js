@@ -28,12 +28,13 @@ function sum(...args){
 }
 
 const compareArrays = (arr1, arr2) => {
-    if (arr1.length === arr2.length) {
-        const foundIndex = arr1.findIndex((element, index) => arr2[index]);
-        return true;
+    if (arr1.length !== arr2.length) {
+        return false;
     }
-    return false;
-}
+    return arr1.every((item, index) => {
+        return item === arr2[index];
+    });
+};
 
 const memorize = (fn, limit) => {
     const memory = [];
@@ -43,17 +44,15 @@ const memorize = (fn, limit) => {
             return foundItem.result;
         } else {
             const newResult = fn(...args);
-            const resultAdded = args.reduce((acc, curr) => {
-                return {
-                    args: args,
-                    result: newResult
-                }
-            }, {});
+            memory.push({
+                args,
+                result: newResult,
+            });
             if (memory.length === limit) {
                 memory.splice(0, 1);
-                memory.push(resultAdded);
+                memory.push(newResult);
             } else {
-                memory.push(resultAdded);
+                memory.push(newResult);
             }
             return newResult;
         }
