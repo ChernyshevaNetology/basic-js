@@ -38,7 +38,7 @@ const compareArrays = (arr1, arr2) => {
 
 const memorize = (fn, limit) => {
     const memory = [];
-    return (...args) => {
+    return (...args) => { // зачем мы сразу возвращаем аргументы???
         const foundItem = memory.find(item => compareArrays(item.args, args));
         if (foundItem) {
             return foundItem.result;
@@ -46,11 +46,6 @@ const memorize = (fn, limit) => {
             const newResult = fn(...args);
             if (memory.length === limit) {
                 memory.splice(0, 1);
-                memory.push({
-                    args,
-                    result: newResult,
-                });
-            } else {
                 memory.push({
                     args,
                     result: newResult,
