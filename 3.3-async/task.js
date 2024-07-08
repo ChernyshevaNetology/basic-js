@@ -10,7 +10,8 @@ class AlarmClock {
             throw new Error('ID не был передан!');
         }
         if (this.alarmCollection.find(item => item.id === id)) {
-            console.error('Будильник с таким id уже добавлен.')
+            console.error('Будильник с таким id уже добавлен.');
+            return;
         }
         this.alarmCollection.push({
                 time: time,
