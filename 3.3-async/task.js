@@ -5,7 +5,6 @@ class AlarmClock {
     }
 
     addClock(time, callback, id) {
-        console.log(this.alarmCollection);
         if (!id) {
             throw new Error('ID не был передан!');
         }
@@ -22,9 +21,9 @@ class AlarmClock {
     }
 
     removeClock(id) {
-        const duplicateAlarmIndex = this.alarmCollection.findIndex((item => item.id === id));
-        if (duplicateAlarmIndex !== -1) {
-            this.alarmCollection.splice(duplicateAlarmIndex, 1);
+        const duplicateAlarmIndex = this.alarmCollection.filter(((item, index) => item.id === id[index]));
+        if (duplicateAlarmIndex) {
+            this.alarmCollection.splice(duplicateAlarmIndex.id, 1);
         }
     }
 
