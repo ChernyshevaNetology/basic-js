@@ -52,7 +52,7 @@ class AlarmClock {
     }
 
     printAlarms() {
-        return this.alarmCollection.forEach(item => console.log(`Будильник №${item.id} заведен на ${item.time}`));
+        this.alarmCollection.forEach(item => console.log(`Будильник №${item.id} заведен на ${item.time}`));
     }
 
     clearAlarms() {
