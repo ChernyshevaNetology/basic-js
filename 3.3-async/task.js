@@ -21,10 +21,7 @@ class AlarmClock {
     }
 
     removeClock(id) {
-        const duplicateAlarmIndex = this.alarmCollection.filter(((item, index) => item.id === id[index]));
-        if (duplicateAlarmIndex) {
-            this.alarmCollection.splice(duplicateAlarmIndex.id, 1);
-        }
+        this.alarmCollection = this.alarmCollection.filter((item) => item.id !== id);
     }
 
     getCurrentFormattedTime() {
