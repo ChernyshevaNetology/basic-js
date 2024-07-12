@@ -46,11 +46,11 @@ const memorize = (fn, limit) => {
             const newResult = fn(...args);
             if (memory.length === limit) {
                 memory.splice(0, 1);
-                memory.push({
-                    args,
-                    result: newResult,
-                });
-            }
+                }
+            memory.push({
+                args,
+                result: newResult,
+            })
             return newResult;
         }
     }
